@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA STONE – Luxury Marble, Granite & Premium Quartz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+    /* ============================================================
+       KILNSTONE DESIGN SYSTEM — applied to AURA STONE
+    ============================================================ */
+    :root {
+      --ink:        #1B1A18;
+      --cream:      #EFE8D8;
+      --cream-deep: #E8DEC9;
+      --paper:      #F4EFE3;
+      --brass:      #A87E4E;
+      --brass-soft: #C09A6B;
+      --stone:      #9A8869;
+      --grey:       #6E6862;
+      --panel:      #211E19;
+      --hairline:   rgba(27,26,24,.16);
+      --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+    html { scroll-behavior: smooth }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display:block; max-width:100% }
+    a   { color:inherit; text-decoration:none }
+    ::selection { background: var(--brass); color: var(--cream) }
+
+    /* ---- scrollbar ---- */
+    ::-webkit-scrollbar { width: 5px }
+    ::-webkit-scrollbar-track { background: var(--cream) }
+    ::-webkit-scrollbar-thumb { background: var(--brass); border-radius: 2px }
+
+    /* ---- type utilities ---- */
+    .eyebrow {
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .38em; text-transform: uppercase; color: var(--brass);
+    }
+    .kicker { font-family: var(--serif); font-style:italic; color: var(--brass); font-size: 20px }
+    .small  { font-family: var(--sans); font-size: 12.5px; letter-spacing: .06em; color: var(--grey) }
+    h1,h2,h3 { font-weight:500; line-height:1.08 }
+    .display { font-size: clamp(44px,6.2vw,86px); letter-spacing:-.01em }
+    .h2      { font-size: clamp(34px,4vw,56px) }
+    .lede    { font-size: clamp(20px,1.6vw,23px); color: #2c2a26; max-width: 56ch }
+    .rule    { width:56px; height:1px; background:var(--brass); margin:26px 0 }
+    .center  { text-align:center }
+    .center .rule { margin-left:auto; margin-right:auto }
+
+    /* ---- buttons ---- */
+    .btn {
+      font-family: var(--sans); font-size:11px; font-weight:500;
+      letter-spacing:.26em; text-transform:uppercase;
+      padding:15px 28px; border:1px solid var(--ink);
+      display:inline-block; cursor:pointer;
+      transition: all .35s ease; background:transparent; color:var(--ink);
+    }
+    .btn:hover { background:var(--ink); color:var(--cream); letter-spacing:.32em }
+    .btn.brass { border-color:var(--brass); color:var(--brass) }
+    .btn.brass:hover { background:var(--brass); color:var(--cream) }
+
+    /* ---- telemetry bar ---- */
+    .telemetry-bar {
+      background: var(--panel);
+      border-bottom: 1px solid var(--hairline);
+      padding: 8px clamp(20px,5vw,64px);
+      font-family: var(--sans); font-size: 10px; font-weight:500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--stone);
+      display: flex; justify-content: space-between; align-items: center;
+      position: relative; z-index: 101;
+    }
+    .telemetry-bar .tel-left  { display:flex; gap:28px; align-items:center }
+    .telemetry-bar .tel-right { display:flex; gap:16px; align-items:center }
+    .telemetry-bar i { color: var(--brass-soft); margin-right:4px }
+    .live-dot {
+      display:inline-block; width:7px; height:7px;
+      background:#5a9e6f; border-radius:50%; margin-right:6px;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity:1; transform:scale(1) }
+      50%      { opacity:.5; transform:scale(1.4) }
+    }
+    .tel-btn {
+      background:none; border:1px solid var(--hairline); cursor:pointer;
+      font-family:var(--sans); font-size:10px; font-weight:500;
+      letter-spacing:.22em; text-transform:uppercase;
+      color:var(--stone); padding:5px 12px;
+      transition: border-color .3s, color .3s;
+    }
+    .tel-btn:hover { border-color:var(--brass); color:var(--brass) }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky; top:0; z-index:100;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:20px clamp(20px,5vw,64px);
+      transition: background .45s ease, box-shadow .45s ease, padding .45s ease;
+      background: rgba(239,232,216,.96);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 1px 0 var(--hairline);
+    }
+    .masthead {
+      font-family:var(--sans); font-weight:500; font-size:13px;
+      letter-spacing:.34em; white-space:nowrap; cursor:pointer;
+    }
+    .masthead span { color:var(--brass) }
+    .masthead em {
+      display:block; font-family:var(--serif); font-style:italic;
+      font-size:13px; letter-spacing:.06em; color:var(--stone);
+      margin-top:1px; text-transform:none;
+    }
+    .nav-links { display:flex; gap:clamp(18px,3vw,42px); align-items:center }
+    .nav-links a {
+      font-family:var(--sans); font-size:11px; font-weight:500;
+      letter-spacing:.28em; text-transform:uppercase;
+      position:relative; padding:6px 0; color:var(--ink);
+    }
+    .nav-links a::after {
+      content:''; position:absolute; left:0; bottom:0;
+      height:1px; width:100%; background:var(--brass);
+      transform:scaleX(0); transform-origin:left; transition:transform .35s ease;
+    }
+    .nav-links a:hover::after { transform:scaleX(1) }
+    .nav-cta {
+      border:1px solid var(--brass); padding:9px 18px !important;
+      color:var(--brass) !important; transition:background .3s,color .3s;
+    }
+    .nav-cta:hover { background:var(--brass); color:var(--cream) !important }
+    .nav-cta::after { display:none }
+    .burger {
+      display:none; background:none; border:none; cursor:pointer;
+      font-family:var(--sans); font-size:11px; letter-spacing:.28em;
+      text-transform:uppercase; color:var(--ink); padding:6px 0;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: minmax(0,46%) minmax(0,54%);
+      position: relative;
+    }
+    .hero-copy {
+      display:flex; flex-direction:column; justify-content:center;
+      padding: clamp(80px,12vh,140px) clamp(24px,5vw,72px) 80px;
+    }
+    .hero-copy .display { margin:22px 0 8px }
+    .hero-media { position:relative; overflow:hidden; min-height:60vh }
+    .hero-media img {
+      width:100%; height:100%; object-fit:cover;
+      transform:scale(1.08);
+      animation: kiln 3.2s cubic-bezier(.2,.6,.2,1) forwards;
+    }
+    @keyframes kiln { to { transform:scale(1) } }
+    .hero-media::after {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(90deg, var(--cream) 0%, rgba(239,232,216,0) 14%);
+    }
+    .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; margin-top:38px }
+    .hero-tag {
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--sans); font-size:10px; font-weight:500;
+      letter-spacing:.32em; text-transform:uppercase;
+      color:var(--brass); border:1px solid rgba(168,126,78,.3);
+      padding:7px 14px; margin-bottom:8px;
+    }
+    .hero-foot {
+      position:absolute; bottom:26px; left:clamp(24px,5vw,72px);
+      display:flex; gap:34px; align-items:center;
+    }
+    .scroll-hint { width:1px; height:52px; background:var(--brass); position:relative; overflow:hidden }
+    .scroll-hint::after {
+      content:''; position:absolute; inset:0;
+      background:var(--cream);
+      animation: drip 2.2s ease-in-out infinite;
+    }
+    @keyframes drip {
+      0%   { transform:translateY(-100%) }
+      55%  { transform:translateY(100%) }
+      100% { transform:translateY(100%) }
+    }
+
+    /* ---- hero feature strip ---- */
+    .feature-strip {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      border-top:1px solid var(--hairline); background:var(--paper);
+    }
+    .feature-strip > div {
+      padding: 22px clamp(16px,2.5vw,32px);
+      border-right: 1px solid var(--hairline);
+    }
+    .feature-strip > div:last-child { border-right:none }
+    .feature-strip .f-label {
+      font-family:var(--sans); font-size:9.5px; letter-spacing:.3em;
+      text-transform:uppercase; color:var(--brass); display:block; margin-bottom:4px;
+    }
+    .feature-strip .f-val {
+      font-family:var(--sans); font-size:11px; letter-spacing:.08em; color:var(--stone);
+    }
+
+    /* ---- sections ---- */
+    section { padding: clamp(70px,10vw,130px) clamp(24px,6vw,88px) }
+
+    /* ---- materials section ---- */
+    .materials-section {
+      background: var(--paper);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .section-head {
+      display:flex; justify-content:space-between; align-items:flex-end;
+      margin-bottom:56px; gap:24px; flex-wrap:wrap;
+    }
+    /* chips / filters */
+    .chips { display:flex; flex-wrap:wrap; gap:10px }
+    .chip {
+      font-family:var(--sans); font-size:11px; font-weight:500;
+      letter-spacing:.22em; text-transform:uppercase;
+      border:1px solid var(--hairline); background:transparent;
+      color:var(--grey); padding:11px 18px; cursor:pointer;
+      transition:all .3s ease;
+    }
+    .chip:hover { border-color:var(--brass); color:var(--brass) }
+    .chip.on { background:var(--ink); border-color:var(--ink); color:var(--cream-deep) }
+
+    /* slab cards */
+    .slabs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.4vw,32px) }
+    .slab-card {
+      background: var(--cream-deep);
+      border: 1px solid var(--hairline);
+      overflow:hidden;
+      display:flex; flex-direction:column;
+      transition: box-shadow .4s ease;
+    }
+    .slab-card:hover { box-shadow: 0 12px 40px rgba(27,26,24,.12) }
+    .slab-img { position:relative; overflow:hidden; aspect-ratio:4/5 }
+    .slab-img img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform 1.4s cubic-bezier(.2,.6,.2,1);
+    }
+    .slab-card:hover .slab-img img { transform:scale(1.05) }
+    .slab-cat-pill {
+      position:absolute; top:0; left:0;
+      font-family:var(--sans); font-size:9.5px; letter-spacing:.28em;
+      text-transform:uppercase; color:var(--cream-deep);
+      background:var(--panel); padding:8px 14px;
+    }
+    .slab-body { padding:26px 24px; flex:1; display:flex; flex-direction:column }
+    .slab-name { font-size:clamp(20px,1.8vw,26px); letter-spacing:.04em; margin-bottom:4px }
+    .slab-origin { font-family:var(--sans); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--stone); margin-bottom:12px }
+    .slab-rarity { font-style:italic; color:var(--brass-soft); font-size:15px; margin-bottom:14px }
+    .slab-desc { font-family:var(--sans); font-size:13px; color:var(--grey); line-height:1.7; flex:1 }
+    .slab-footer { padding:0 24px 24px }
+
+    /* ---- about / vein section ---- */
+    .vein-section { background: var(--panel); color: var(--cream-deep) }
+    .vein-section .eyebrow { color: var(--brass-soft) }
+    .vein-section .lede { color: rgba(232,222,201,.7) }
+    .vein-section .rule { background: var(--brass-soft) }
+    .vein-split {
+      display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      gap:clamp(34px,6vw,90px); align-items:center; margin-top:56px;
+    }
+    .vein-stats {
+      display:grid; grid-template-columns:1fr 1fr; gap:32px;
+      border-top:1px solid rgba(232,222,201,.18); padding-top:32px; margin-top:32px;
+    }
+    .stat-num { font-size:clamp(36px,3.6vw,52px); font-weight:500; color:var(--brass-soft); display:block; margin-bottom:4px }
+    .stat-label { font-family:var(--sans); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--stone) }
+    .vein-media { position:relative; overflow:hidden; aspect-ratio:4/5 }
+    .vein-media img { width:100%; height:100%; object-fit:cover; transition:transform 1.6s ease }
+    .vein-media:hover img { transform:scale(1.04) }
+    .vein-media::before {
+      content:''; position:absolute; inset:16px;
+      border:1px solid rgba(232,222,201,.2); z-index:1; pointer-events:none;
+    }
+
+    /* ---- catalogs ---- */
+    .catalogs-section { background: var(--cream) }
+    .catalogs-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2vw,28px); margin-top:56px }
+    .cat-card {
+      border:1px solid var(--hairline);
+      overflow:hidden; background:var(--paper);
+      display:flex; flex-direction:column;
+      transition:box-shadow .4s;
+    }
+    .cat-card:hover { box-shadow: 0 8px 32px rgba(27,26,24,.1) }
+    .cat-img { position:relative; overflow:hidden; height:160px }
+    .cat-img img { width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.6,.2,1) }
+    .cat-card:hover .cat-img img { transform:scale(1.05) }
+    .cat-img-caption {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:10px 14px;
+      background:linear-gradient(transparent,rgba(27,26,24,.7));
+      font-family:var(--sans); font-size:9.5px; letter-spacing:.28em;
+      text-transform:uppercase; color:var(--cream-deep);
+    }
+    .cat-body { padding:20px 18px; flex:1 }
+    .cat-title { font-size:clamp(17px,1.4vw,21px); margin-bottom:6px }
+    .cat-desc  { font-family:var(--sans); font-size:12px; color:var(--grey); line-height:1.6 }
+    .cat-footer { padding:0 18px 18px }
+    .dl-btn {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      font-family:var(--sans); font-size:10px; font-weight:500;
+      letter-spacing:.24em; text-transform:uppercase;
+      padding:12px; border:1px solid var(--hairline);
+      color:var(--stone); transition:all .3s ease; cursor:pointer;
+    }
+    .dl-btn:hover { border-color:var(--brass); color:var(--brass) }
+
+    /* ---- quote band ---- */
+    .band {
+      background:var(--panel); color:var(--cream-deep); text-align:center;
+      padding: clamp(90px,12vw,150px) clamp(24px,8vw,120px);
+    }
+    .band .h2 { font-style:italic; font-weight:400; max-width:26ch; margin:26px auto 0 }
+    .band .eyebrow { color:var(--brass-soft) }
+
+    /* ---- booking section ---- */
+    .booking-section { background: var(--paper); border-top:1px solid var(--hairline) }
+    .booking-wrap { max-width:720px; margin:0 auto }
+    .booking-form-card {
+      margin-top:52px; border-top:1px solid var(--brass);
+      padding-top:40px;
+    }
+    .form-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px }
+    .form-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px }
+    .field { margin-bottom:26px }
+    .field label {
+      display:block; font-family:var(--sans); font-size:10.5px;
+      letter-spacing:.3em; text-transform:uppercase;
+      color:var(--stone); margin-bottom:10px;
+    }
+    .field input,.field textarea,.field select {
+      width:100%; background:transparent; border:none;
+      border-bottom:1px solid var(--hairline);
+      font-family:var(--serif); font-size:20px; color:var(--ink);
+      padding:8px 2px; transition:border-color .3s; border-radius:0;
+      -webkit-appearance:none; appearance:none;
+    }
+    .field select { cursor:pointer }
+    .field textarea { resize:vertical; min-height:110px; line-height:1.5 }
+    .field input:focus,.field textarea:focus,.field select:focus {
+      outline:none; border-bottom-color:var(--brass);
+    }
+    .form-note { font-style:italic; color:var(--grey); font-size:16.5px; margin-top:18px }
+
+    /* registers (reuse from product page) */
+    .registers { margin-top:32px; border-top:1px solid var(--brass) }
+    .reg {
+      display:grid; grid-template-columns:70px 1fr auto;
+      align-items:baseline; gap:24px; padding:22px 4px;
+      border-bottom:1px solid var(--hairline);
+      transition:background .4s ease, padding-left .4s ease;
+    }
+    .reg:hover { background:rgba(168,126,78,.06); padding-left:16px }
+    .reg .num { font-style:italic; color:var(--stone); font-size:17px }
+
+    /* ---- footer ---- */
+    footer {
+      background:var(--panel); color:var(--stone);
+      padding:64px clamp(24px,6vw,88px) 40px;
+    }
+    .foot-top {
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:30px; flex-wrap:wrap;
+      border-bottom:1px solid rgba(232,222,201,.12); padding-bottom:44px;
+    }
+    .foot-mast {
+      font-family:var(--sans); font-size:13px; letter-spacing:.34em;
+      color:var(--cream-deep);
+    }
+    .foot-mast em {
+      display:block; font-family:var(--serif); font-style:italic;
+      font-size:16px; letter-spacing:.02em; color:var(--brass-soft);
+      margin-top:10px; text-transform:none;
+    }
+    .foot-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:40px }
+    .foot-col-label {
+      font-family:var(--sans); font-size:10px; letter-spacing:.3em;
+      text-transform:uppercase; color:var(--stone); display:block; margin-bottom:14px;
+    }
+    .foot-col p, .foot-col a {
+      font-family:var(--sans); font-size:12px; line-height:1.9; color:var(--grey);
+      transition:color .3s;
+    }
+    .foot-col a:hover { color:var(--brass-soft) }
+    .foot-social { display:flex; gap:16px; margin-top:8px }
+    .foot-social a {
+      font-size:16px; color:var(--grey);
+      border:1px solid var(--hairline); padding:8px 10px;
+      transition:border-color .3s, color .3s;
+    }
+    .foot-social a:hover { border-color:var(--brass-soft); color:var(--brass-soft) }
+    .foot-base {
+      display:flex; justify-content:space-between; flex-wrap:wrap;
+      gap:14px; padding-top:26px;
+      font-family:var(--sans); font-size:10px; letter-spacing:.24em;
+      text-transform:uppercase; color:var(--grey);
+    }
+
+    /* ---- CMS / Admin panel ---- */
+    .view-section { display:block }
+    .view-section.hidden { display:none }
+
+    .admin-panel {
+      background: var(--ink); color:var(--cream-deep);
+      min-height:100vh; padding:clamp(32px,5vw,64px);
+    }
+    .admin-head {
+      display:flex; justify-content:space-between; align-items:flex-start; gap:24px;
+      border-bottom:1px solid var(--hairline); padding-bottom:32px; margin-bottom:40px; flex-wrap:wrap;
+    }
+    .admin-badge {
+      font-family:var(--sans); font-size:9px; letter-spacing:.3em;
+      text-transform:uppercase; background:rgba(168,126,78,.18);
+      color:var(--brass); padding:4px 10px; display:inline-flex;
+      align-items:center; gap:8px; margin-bottom:8px;
+    }
+    .admin-title { font-size:clamp(26px,3vw,40px); font-weight:500; color:var(--cream) }
+    .admin-stats {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:40px;
+    }
+    .stat-card {
+      border:1px solid var(--hairline); padding:20px 22px;
+    }
+    .stat-card .s-label { font-family:var(--sans); font-size:9.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px }
+    .stat-card .s-val   { font-size:clamp(28px,2.8vw,38px); font-weight:500; color:var(--brass) }
+    .admin-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.7fr); gap:32px; align-items:start }
+    .admin-card {
+      border:1px solid var(--hairline); padding:28px; margin-bottom:24px;
+    }
+    .admin-card-title {
+      font-family:var(--sans); font-size:10px; font-weight:500;
+      letter-spacing:.3em; text-transform:uppercase; color:var(--brass);
+      display:flex; align-items:center; gap:8px;
+      padding-bottom:16px; margin-bottom:22px; border-bottom:1px solid var(--hairline);
+    }
+    .cms-field { margin-bottom:20px }
+    .cms-label {
+      font-family:var(--sans); font-size:9.5px; letter-spacing:.28em;
+      text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px;
+    }
+    .cms-input {
+      width:100%; background:transparent; border:none;
+      border-bottom:1px solid var(--hairline);
+      font-family:var(--serif); font-size:17px; color:var(--cream-deep);
+      padding:7px 2px; transition:border-color .3s; border-radius:0;
+    }
+    .cms-input:focus { outline:none; border-bottom-color:var(--brass) }
+    textarea.cms-input { resize:vertical; min-height:80px }
+    select.cms-input { cursor:pointer; -webkit-appearance:none; appearance:none; background:transparent }
+    .cms-btn {
+      font-family:var(--sans); font-size:10px; font-weight:500;
+      letter-spacing:.26em; text-transform:uppercase;
+      padding:13px 24px; border:1px solid var(--brass);
+      color:var(--brass); cursor:pointer; background:transparent;
+      transition:all .35s ease; width:100%; margin-top:8px;
+    }
+    .cms-btn:hover { background:var(--brass); color:var(--cream) }
+    .cms-btn.light { border-color:var(--cream-deep); color:var(--cream-deep) }
+    .cms-btn.light:hover { background:var(--cream-deep); color:var(--panel) }
+
+    /* table */
+    .cms-table { width:100%; border-collapse:collapse }
+    .cms-table th {
+      font-family:var(--sans); font-size:9.5px; letter-spacing:.28em;
+      text-transform:uppercase; color:var(--brass);
+      padding:10px 14px; border-bottom:1px solid var(--hairline); text-align:left;
+    }
+    .cms-table td { padding:12px 14px; border-bottom:1px solid rgba(27,26,24,.3); font-family:var(--sans); font-size:12px; color:var(--stone) }
+    .cms-table tr:hover td { background:rgba(168,126,78,.04) }
+    .purge-btn {
+      font-family:var(--sans); font-size:9px; letter-spacing:.22em; text-transform:uppercase;
+      color:#a05a5a; background:none; border:1px solid rgba(160,90,90,.3); cursor:pointer;
+      padding:4px 10px; transition:all .3s;
+    }
+    .purge-btn:hover { border-color:#a05a5a; background:rgba(160,90,90,.08) }
+
+    /* audit terminal */
+    .audit-terminal {
+      border:1px solid var(--hairline); padding:20px 22px;
+      margin-top:32px;
+    }
+    .audit-label {
+      font-family:var(--sans); font-size:9.5px; letter-spacing:.28em;
+      text-transform:uppercase; color:var(--stone); display:block; margin-bottom:12px;
+    }
+    .audit-log {
+      background:rgba(0,0,0,.4); padding:16px; font-family:var(--sans);
+      font-size:11px; line-height:1.8; color:#6e9e7a;
+      height:120px; overflow-y:auto;
+    }
+
+    /* ---- booking success modal ---- */
+    .modal-overlay {
+      position:fixed; inset:0; z-index:200;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(27,26,24,.88); padding:24px;
+    }
+    .modal-overlay.hidden { display:none }
+    .modal-card {
+      background:var(--panel); border:1px solid rgba(168,126,78,.4);
+      padding:48px; max-width:520px; width:100%;
+      color:var(--cream-deep);
+    }
+    .modal-icon {
+      width:56px; height:56px; background:var(--brass);
+      display:flex; align-items:center; justify-content:center;
+      font-size:22px; color:var(--cream); margin:0 auto 28px;
+    }
+    .modal-title { font-size:clamp(24px,2.4vw,34px); text-align:center; margin-bottom:4px }
+    .modal-sub {
+      font-family:var(--sans); font-size:10px; letter-spacing:.32em;
+      text-transform:uppercase; color:var(--brass); text-align:center; margin-bottom:28px;
+    }
+    .ticket-summary {
+      background:rgba(0,0,0,.3); border:1px solid var(--hairline);
+      padding:20px 22px; margin-bottom:28px;
+      font-family:var(--sans); font-size:12px; line-height:2; color:var(--stone);
+    }
+    .modal-note { font-style:italic; font-size:15px; color:var(--stone); text-align:center; margin-bottom:28px }
+    .modal-btns { display:flex; gap:14px }
+    .wa-btn {
+      flex:1; display:block; text-align:center;
+      font-family:var(--sans); font-size:10px; font-weight:500;
+      letter-spacing:.26em; text-transform:uppercase;
+      padding:15px; background:var(--brass); color:var(--cream);
+      border:1px solid var(--brass); transition:all .3s;
+    }
+    .wa-btn:hover { background:transparent; color:var(--brass) }
+
+    /* ---- focus & a11y ---- */
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    textarea:focus-visible, select:focus-visible {
+      outline:2px solid var(--brass); outline-offset:3px;
+    }
+
+    /* ---- reveals ---- */
+    .rv { opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1) }
+    .rv.in { opacity:1; transform:none }
+    .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
+
+    /* ---- reduced motion ---- */
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
+      html{scroll-behavior:auto}
+      .rv{opacity:1;transform:none}
+    }
+
+    /* ---- responsive ---- */
+    @media(max-width:960px){
+      .hero{grid-template-columns:1fr}
+      .hero-media{min-height:52vh;order:-1}
+      .hero-media::after{background:linear-gradient(0deg,var(--cream) 0%,rgba(239,232,216,0) 16%)}
+      .hero-copy{padding-top:40px}
+      .hero-foot{position:static;margin-top:40px;padding-left:0}
+      .feature-strip{grid-template-columns:1fr 1fr}
+      .feature-strip > div:nth-child(2){border-right:none}
+      .slabs-grid{grid-template-columns:1fr 1fr}
+      .vein-split{grid-template-columns:1fr}
+      .catalogs-grid{grid-template-columns:1fr 1fr}
+      .admin-grid{grid-template-columns:1fr}
+      .admin-stats{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .slabs-grid{grid-template-columns:1fr}
+      .catalogs-grid{grid-template-columns:1fr}
+      .form-grid-2,.form-grid-3{grid-template-columns:1fr}
+      .admin-stats{grid-template-columns:1fr}
+      .foot-cols{grid-template-columns:1fr}
+      .feature-strip{grid-template-columns:1fr}
+      .feature-strip > div{border-right:none;border-bottom:1px solid var(--hairline)}
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        background:var(--cream);flex-direction:column;
+        padding:22px;gap:20px;box-shadow:0 12px 24px rgba(27,26,24,.08);
+      }
+      .nav-links.open{display:flex}
+      .burger{display:block}
+    }
+    </style>
+</head>
+<body>
+
+<!-- TELEMETRY BAR -->
+<div class="telemetry-bar">
+    <div class="tel-left">
+        <span><i class="bi bi-geo-alt"></i> AJMAN, UAE</span>
+        <span class="hidden-sm"><i class="bi bi-shield-check"></i> MONOLITHIC PERSISTENT LABS</span>
+    </div>
+    <div class="tel-right">
+        <span><span class="live-dot"></span><span style="font-family:var(--sans);font-size:10px;letter-spacing:.22em;color:#6e9e7a;">MONGODB SECURE LIVE</span></span>
+        <span style="color:var(--hairline)">|</span>
+        <button class="tel-btn" onclick="toggleView('admin')"><i class="bi bi-sliders" style="margin-right:4px"></i>CMS PANEL</button>
+    </div>
+</div>
+
+<!-- ===================== CUSTOMER VIEW ===================== -->
+<div id="customer-view" class="view-section">
+
+    <!-- NAV -->
+    <nav id="nav">
+        <div class="masthead" onclick="toggleView('customer')">
+            AURA <span>STONE</span>
+            <em>Sovereign Surfaces</em>
+        </div>
+        <div class="nav-links" id="navlinks">
+            <a href="#about">The Legend</a>
+            <a href="#materials">Slabs</a>
+            <a href="#catalogs">Catalogues</a>
+            <a href="#experience">Gallery</a>
+            <a href="#experience" class="nav-cta" onclick="openBookingModal()">Secure Booking</a>
+        </div>
+        <button class="burger" id="burger" aria-expanded="false" aria-label="Open menu">MENU</button>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero" id="home">
+        <div class="hero-copy">
+            <span class="hero-tag rv"><i class="bi bi-stars"></i><span id="cms-hero-tag">ULTRA-PREMIUM MONOLITHIC ART</span></span>
+            <h1 id="cms-hero-title" class="display rv d1">The Ultimate<br><em style="color:var(--brass)">Sovereign Stone.</em></h1>
+            <div class="rule rv d2"></div>
+            <p id="cms-hero-subtitle" class="lede rv d2">Imported directly from Carrara and high-elevation Tuscan quarries. Engineered for royalty, curated for global visionaries. Experiential Slab gallery now open in Ajman.</p>
+            <div class="hero-ctas rv d3">
+                <a href="#materials" class="btn brass">View Majestic Slabs</a>
+                <a href="#catalogs" class="btn"><i class="bi bi-file-earmark-pdf" style="margin-right:6px"></i>PDF Catalogues</a>
+            </div>
+        </div>
+        <div class="hero-media">
+            <img id="cms-hero-bg-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" alt="Luxury Stone Interior">
+        </div>
+        <div class="hero-foot">
+            <div class="scroll-hint"></div>
+            <span class="small">Est. in Ajman, UAE · Fine Stone Merchants</span>
+        </div>
+    </div>
+
+    <!-- FEATURE STRIP -->
+    <div class="feature-strip">
+        <div><span class="f-label">Origin Guaranteed</span><span class="f-val">100% Tuscan Autonomy</span></div>
+        <div><span class="f-label">Vein Controllability</span><span class="f-val">Mirror Match Continuity</span></div>
+        <div><span class="f-label">Ajman Prime Depot</span><span class="f-val">Immediate UAE Handover</span></div>
+        <div><span class="f-label">EPD Certified</span><span class="f-val">Net-Zero Mining Integrity</span></div>
+    </div>
+
+    <!-- HOUSE / INTRO -->
+    <section id="about-intro" class="center">
+        <p class="eyebrow rv">The House</p>
+        <h2 class="h2 rv d1">Stone keeps its dignity quietly.</h2>
+        <div class="rule rv d1"></div>
+        <p class="lede rv d2" style="margin:0 auto">We supply fine stone to the people who specify — architects, developers, showrooms and fit-out contractors. Our conversations are held across a table, not across a page, and every arrangement is shaped to the project rather than to a printed rule.</p>
+    </section>
+
+    <!-- MATERIALS -->
+    <section id="materials" class="materials-section">
+        <div class="section-head rv">
+            <div>
+                <p class="eyebrow">Immersive Collection</p>
+                <h2 class="h2" style="margin-top:12px">The Archival Stone Lines.</h2>
+                <div class="rule"></div>
+            </div>
+            <div class="chips" id="category-filters">
+                <button onclick="filterMaterials('all',event)" class="chip on">All Artifacts</button>
+                <button onclick="filterMaterials('Marble',event)" class="chip">Italian Marble</button>
+                <button onclick="filterMaterials('Granite',event)" class="chip">Deep Granite</button>
+                <button onclick="filterMaterials('Quartz',event)" class="chip">Quartz &amp; Onyx</button>
+            </div>
+        </div>
+        <div id="materials-grid" class="slabs-grid"></div>
+    </section>
+
+    <!-- VEIN / ABOUT BAND -->
+    <section id="about" class="vein-section">
+        <div class="center">
+            <p class="eyebrow rv">Connoisseur Quality</p>
+            <h2 class="h2 rv d1" style="color:var(--cream-deep)">Exceptional Vein-Alignment Technology.</h2>
+            <div class="rule rv d2" style="margin-left:auto;margin-right:auto"></div>
+        </div>
+        <div class="vein-split">
+            <div class="rv">
+                <p class="lede">Aura Stone represents the world's most sophisticated logistics flow for monumental architecture. Our proprietary booking database lets you select specific slabs, ensuring visual vein patterns connect flawlessly across expansive hotel lobbies, premium high-rises, or signature penthouses in the UAE.</p>
+                <div class="vein-stats">
+                    <div><span class="stat-num">0%</span><span class="stat-label">Structural Micro-Fissure Rate</span></div>
+                    <div><span class="stat-num">45+</span><span class="stat-label">Exclusive Quarry Monopolies</span></div>
+                </div>
+            </div>
+            <div class="vein-media rv d2">
+                <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&q=80&w=1200" alt="Detail Macro Work">
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE BAND -->
+    <div class="band">
+        <p class="eyebrow rv">From the quarry floor</p>
+        <h2 class="h2 rv d1">"The stone does not ask to be admired. It simply endures."</h2>
+    </div>
+
+    <!-- CATALOGUES -->
+    <section id="catalogs" class="catalogs-section">
+        <div class="center">
+            <p class="eyebrow rv">Professional Documentation</p>
+            <h2 class="h2 rv d1">Interior Specification Catalogues.</h2>
+            <div class="rule rv d1"></div>
+            <p class="lede rv d2" style="margin:0 auto">Click any folio to trigger a lossless PDF download for your design team.</p>
+        </div>
+        <div id="catalogs-grid" class="catalogs-grid"></div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="experience" class="booking-section">
+        <div class="booking-wrap">
+            <div class="center">
+                <p class="eyebrow rv">Reserve a Private Invitation</p>
+                <h2 class="h2 rv d1">Visit Our Signature Showroom.</h2>
+                <div class="rule rv d1"></div>
+                <p class="lede rv d2" style="margin:0 auto">Experience physical monolith slabs under simulated architectural light scenarios at our Al Rawda showroom, Ajman. Specifiers and high-net-worth developers only — close appointments preferred.</p>
+            </div>
+            <div class="booking-form-card rv">
+                <form id="appointment-form" onsubmit="handleNewAppointment(event)">
+                    <div class="form-grid-2">
+                        <div class="field">
+                            <label>Full Name</label>
+                            <input type="text" id="appt-name" required>
+                        </div>
+                        <div class="field">
+                            <label>Contact Phone (WhatsApp)</label>
+                            <input type="tel" id="appt-phone" required placeholder="+971…">
+                        </div>
+                    </div>
+                    <div class="form-grid-3">
+                        <div class="field">
+                            <label>Preferred Date</label>
+                            <input type="date" id="appt-date" required>
+                        </div>
+                        <div class="field">
+                            <label>Preferred Time</label>
+                            <select id="appt-time" required>
+                                <option value="09:00 AM">09:00 AM</option>
+                                <option value="11:30 AM">11:30 AM</option>
+                                <option value="02:00 PM">02:00 PM</option>
+                                <option value="04:30 PM">04:30 PM</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Material Focus</label>
+                            <select id="appt-focus" required>
+                                <option value="Carrara White Marble">Carrara White Marble</option>
+                                <option value="Deep Graphite Granite">Deep Graphite Granite</option>
+                                <option value="Calacatta Quartz">Calacatta Quartz</option>
+                                <option value="Exclusive Bookmatch Design">Exclusive Bookmatch Design</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Architectural Project Scope Notes</label>
+                        <textarea id="appt-notes" rows="3" placeholder="Hotel Lobby floor, Premium Villa kitchen cladding…"></textarea>
+                    </div>
+                    <button type="submit" class="btn brass" style="width:100%;padding:18px;font-size:11px">Generate Vault Ticket &amp; Dispatch WhatsApp Info</button>
+                    <p class="form-note">We respond within one working day. All enquiries are treated in the strictest confidence.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="foot-top">
+            <div>
+                <p class="foot-mast">AURA STONE<em>Sovereign Surfaces · Ajman, UAE</em></p>
+            </div>
+            <div class="foot-cols">
+                <div class="foot-col">
+                    <span class="foot-col-label">The Stone Yard</span>
+                    <p>Industrial Area 3, Al Salam St,<br>Al Rawda, Ajman, UAE</p>
+                </div>
+                <div class="foot-col">
+                    <span class="foot-col-label">Immediate Handshake</span>
+                    <p><a href="tel:+971509174778" style="color:var(--brass-soft)">050 917 4778</a><br>info@aurastone-elite.com</p>
+                </div>
+                <div class="foot-col">
+                    <span class="foot-col-label">Global Quarries Connected</span>
+                    <div class="foot-social">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="https://wa.me/971509174778"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot-base">
+            <span>Est. 2024 · Ajman, UAE · MMXXIV</span>
+            <span>© <span id="year">2026</span> Aura Stone Global Ltd. All rights reserved.</span>
+        </div>
+    </footer>
+
+</div><!-- /customer-view -->
+
+
+<!-- ===================== ADMIN CMS PANEL ===================== -->
+<div id="admin-view" class="view-section hidden">
+    <div class="admin-panel">
+
+        <div class="admin-head">
+            <div>
+                <div class="admin-badge"><span class="live-dot"></span>LIVE MONGODB CMS</div>
+                <h1 class="admin-title">Sovereign Vault Design Panel.</h1>
+            </div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+                <button onclick="toggleView('customer')" class="cms-btn light" style="width:auto;padding:11px 22px"><i class="bi bi-arrow-left"></i> View Live Site</button>
+                <button onclick="seedDatabaseInitial()" class="cms-btn" style="width:auto;padding:11px 22px"><i class="bi bi-database-fill-gear"></i> Reset / Seed Catalogues</button>
+            </div>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card"><span class="s-label">Total Dynamic Slabs</span><span class="s-val" id="stat-slabs-count">0</span></div>
+            <div class="stat-card"><span class="s-label">Live PDF Catalogs</span><span class="s-val" id="stat-catalogs-count">0</span></div>
+            <div class="stat-card"><span class="s-label">Active Showroom Visits</span><span class="s-val" id="stat-visits-count">0</span></div>
+            <div class="stat-card"><span class="s-label">Persistence Mode</span><span class="s-val" style="font-size:13px;font-family:var(--sans);letter-spacing:.2em;color:var(--brass-soft)">PERMANENT MONGODB</span></div>
+        </div>
+
+        <div class="admin-grid">
+
+            <!-- LEFT COLUMN -->
+            <div>
+                <!-- Hero Editor -->
+                <div class="admin-card">
+                    <div class="admin-card-title"><i class="bi bi-pencil-square"></i> Hero Content Editor</div>
+                    <div class="cms-field"><label class="cms-label">Hero Micro-Tag</label><input type="text" id="cms-input-tag" class="cms-input"></div>
+                    <div class="cms-field"><label class="cms-label">Hero Main Title</label><input type="text" id="cms-input-title1" class="cms-input"></div>
+                    <div class="cms-field"><label class="cms-label">Hero Subtitle</label><textarea id="cms-input-subtitle" class="cms-input" rows="3"></textarea></div>
+                    <div class="cms-field"><label class="cms-label">Hero Image URL</label><input type="text" id="cms-input-heroimg" class="cms-input"></div>
+                    <button onclick="saveCmsHeroData()" class="cms-btn">Apply Instant Hero Update</button>
+                </div>
+
+                <!-- PDF Upload -->
+                <div class="admin-card">
+                    <div class="admin-card-title"><i class="bi bi-file-earmark-pdf-fill"></i> Upload PDF Catalogue</div>
+                    <div class="cms-field"><label class="cms-label">Catalogue Label</label><input type="text" id="pdf-title" class="cms-input" placeholder="e.g., Carrara Selection 2026"></div>
+                    <div class="cms-field"><label class="cms-label">Cover Image URL</label><input type="text" id="pdf-image" class="cms-input" placeholder="https://images.unsplash.com/…"></div>
+                    <div class="cms-field"><label class="cms-label">PDF File / Direct Link</label><input type="text" id="pdf-url" class="cms-input" value="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"></div>
+                    <div class="cms-field"><label class="cms-label">Category Label</label><input type="text" id="pdf-cat" class="cms-input" placeholder="e.g., Marble Collection"></div>
+                    <button onclick="addPdfCatalogue()" class="cms-btn">Verify &amp; Deploy Catalog</button>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div>
+                <!-- Slab Creator -->
+                <div class="admin-card">
+                    <div class="admin-card-title" style="justify-content:space-between"><span><i class="bi bi-stack"></i> Slab Repository</span><span style="font-size:9px;letter-spacing:.2em;color:var(--stone)">Dynamic Inventory Creation</span></div>
+                    <form id="slab-creator-form" onsubmit="createNewSlab(event)">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                            <div class="cms-field"><label class="cms-label">Slab Artifact Name</label><input type="text" id="slab-name" required class="cms-input" placeholder="e.g., Arabescato Corchia"></div>
+                            <div class="cms-field"><label class="cms-label">Stone Sub-Category</label>
+                                <select id="slab-category" required class="cms-input">
+                                    <option value="Marble">Marble</option>
+                                    <option value="Granite">Granite</option>
+                                    <option value="Quartz">Quartz</option>
+                                </select>
+                            </div>
+                            <div class="cms-field"><label class="cms-label">Quarry Extraction Site</label><input type="text" id="slab-origin" required class="cms-input" placeholder="e.g., Carrara, Italy"></div>
+                            <div class="cms-field"><label class="cms-label">Rarity Rating</label><input type="text" id="slab-rarity" required class="cms-input" placeholder="e.g., Extremely Limited"></div>
+                        </div>
+                        <div class="cms-field"><label class="cms-label">Texturing Image URL</label><input type="text" id="slab-image" required class="cms-input" placeholder="https://images.unsplash.com/…"></div>
+                        <div class="cms-field"><label class="cms-label">Description</label><textarea id="slab-desc" rows="2" class="cms-input"></textarea></div>
+                        <button type="submit" class="cms-btn">Commit Brand-New Slab Artifact</button>
+                    </form>
+                </div>
+
+                <!-- Booking Ledger -->
+                <div class="admin-card">
+                    <div class="admin-card-title" style="justify-content:space-between">
+                        <span><i class="bi bi-bell-fill"></i> Showroom Booking Ledger</span>
+                        <button onclick="fetchShowroomAppointments()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass)"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+                    </div>
+                    <div style="overflow-x:auto">
+                        <table class="cms-table">
+                            <thead>
+                                <tr>
+                                    <th>VIP Prospect</th>
+                                    <th>Contact</th>
+                                    <th>Epoch</th>
+                                    <th>Material</th>
+                                    <th style="text-align:right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointment-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audit Terminal -->
+        <div class="audit-terminal">
+            <span class="audit-label"><i class="bi bi-terminal-split"></i> Operational Audit Trail</span>
+            <div class="audit-log" id="audit-terminal">
+                [System Init] Loaded security parameters for Ajman premium showroom portal.<br>
+                [System Init] MongoDB persistence checked. Synchronizing schemas now…
+            </div>
+        </div>
+
+    </div>
+</div><!-- /admin-view -->
+
+
+<!-- BOOKING SUCCESS MODAL -->
+<div id="booking-modal-success" class="modal-overlay hidden">
+    <div class="modal-card">
+        <div class="modal-icon"><i class="bi bi-patch-check"></i></div>
+        <h3 class="modal-title">Ticketing Successful.</h3>
+        <p class="modal-sub">Live Pre-Reservation Confirmed</p>
+        <div class="ticket-summary" id="ticket-summary"></div>
+        <p class="modal-note">Click below to route directly to our client liaison specialist via WhatsApp. Your selections are dynamically pre-filled.</p>
+        <div class="modal-btns">
+            <button onclick="closeSuccessModal()" class="btn" style="flex:1;padding:15px">Close</button>
+            <a id="whatsapp-action-btn" target="_blank" class="wa-btn"><i class="bi bi-whatsapp"></i> Initiate WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+/* ============================================================
+   AURA STONE — Application Logic (unchanged from original)
+============================================================ */
+const API_BASE = "http://localhost:4000/api"; // ← Replace with your Render URL after deployment
+
+let state = {
+    slabs: [], catalogs: [], appointments: [],
+    heroData: {
+        tag: "ULTRA-PREMIUM MONOLITHIC ART",
+        title: "The Ultimate Sovereign Stone.",
+        subtitle: "Imported directly from Carrara and high-elevation Tuscan quarries. Engineered for royalty, curated for global visionaries. Experiential Slab gallery now open in Ajman.",
+        heroImg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000"
+    }
+};
+
+const defaultSlabs = [
+    { name:"Arabescato Corchia Classic", category:"Marble", origin:"Carrara Quarries, Italy", rarity:"Highly Coveted", image:"https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800", desc:"Characterized by beautiful oval patterns of deep grey veins swirling across bright ivory backgrounds." },
+    { name:"Deep Cosmic Obsidian Granite", category:"Granite", origin:"Patagonian Shield, Brazil", rarity:"Limited Extraction Series", image:"https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&q=80&w=800", desc:"An absolutely cinematic backdrop of intense graphite, flecked with shimmering micro-veins of stellar gold dust." },
+    { name:"Calacatta Gold Sovereign", category:"Quartz", origin:"Apuan Alps, Italy", rarity:"Premium Masterpieces Only", image:"https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&q=80&w=800", desc:"Specially selected slabs. Veining patterns transition beautifully from soft graphite to pure champagne gold." }
+];
+
+const defaultCatalogs = [
+    { title:"Carrara & Calacatta Folio", category:"Monolith Slices", image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=600", url:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
+    { title:"Obsidian & Deep Granite Archetype", category:"Architectural Exterior", image:"https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&q=80&w=600", url:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
+    { title:"Interior Specification Codex", category:"Premium Tiles & Claddings", image:"https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=600", url:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
+    { title:"The Ajman Vault Portfolio", category:"Showroom Selected Stock", image:"https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=600", url:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" }
+];
+
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('year').textContent = new Date().getFullYear();
+    initRevealObserver();
+    initMobileMenu();
+    initializeApplication();
+});
+
+/* ---- scroll reveals ---- */
+function initRevealObserver() {
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+        return;
+    }
+    var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+}
+
+/* ---- mobile menu ---- */
+function initMobileMenu() {
+    var burger = document.getElementById('burger');
+    var nl     = document.getElementById('navlinks');
+    if (!burger || !nl) return;
+    burger.onclick = function(){
+        var open = nl.classList.contains('open');
+        nl.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'false' : 'true');
+    };
+}
+
+/* ---- view toggle ---- */
+function toggleView(view) {
+    document.querySelectorAll('.view-section').forEach(s => s.classList.add('hidden'));
+    if (view === 'customer') {
+        document.getElementById('customer-view').classList.remove('hidden');
+        window.scrollTo({ top:0, behavior:'smooth' });
+    } else {
+        document.getElementById('admin-view').classList.remove('hidden');
+        document.getElementById('cms-input-tag').value      = state.heroData.tag;
+        document.getElementById('cms-input-title1').value   = state.heroData.title;
+        document.getElementById('cms-input-subtitle').value = state.heroData.subtitle;
+        document.getElementById('cms-input-heroimg').value  = state.heroData.heroImg;
+    }
+}
+
+/* ---- DB helpers ---- */
+async function apiGet(endpoint) {
+    const r = await fetch(`${API_BASE}/${endpoint}`);
+    return r.json();
+}
+async function apiPost(endpoint, data) {
+    try {
+        const r = await fetch(`${API_BASE}/${endpoint}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return await r.json();
+    } catch(e) { return { success: false }; }
+}
+async function apiDelete(endpoint, id) {
+    try {
+        const r = await fetch(`${API_BASE}/${endpoint}/${id}`, { method: 'DELETE' });
+        return await r.json();
+    } catch(e) { return { success: false }; }
+}
+// Legacy shim so existing calls still work
+async function persistToDb(collection, data) { return apiPost(collection, data); }
+
+/* ---- init ---- */
+async function initializeApplication() {
+    logAudit("Attempting core retrieval of state artifacts from MongoDB.");
+    try {
+        const cmsData = await apiGet('cms');
+        if (cmsData.success && cmsData.result) {
+            state.heroData = cmsData.result; applyCmsTextUi();
+        } else { logAudit("Using static baseline hero configuration."); }
+
+        const slabData = await apiGet('slabs');
+        state.slabs = (slabData.success && slabData.result && slabData.result.length > 0)
+            ? slabData.result : defaultSlabs;
+
+        const catData = await apiGet('catalogs');
+        state.catalogs = (catData.success && catData.result && catData.result.length > 0)
+            ? catData.result : defaultCatalogs;
+
+        await fetchShowroomAppointments();
+        renderSlabs(); renderCatalogs(); updateCmsInterfaceCounts();
+        logAudit("AURA STONE state synchronized. Display matrices initialized.");
+    } catch(err) {
+        logAudit("DB init error — falling back to luxury baseline cache.");
+        state.slabs = defaultSlabs; state.catalogs = defaultCatalogs;
+        renderSlabs(); renderCatalogs();
+    }
+}
+
+/* ---- render slabs ---- */
+function renderSlabs(filterCategory = 'all') {
+    const grid = document.getElementById('materials-grid');
+    grid.innerHTML = '';
+    const items = filterCategory === 'all' ? state.slabs : state.slabs.filter(s => s.category.toLowerCase() === filterCategory.toLowerCase());
+    items.forEach(slab => {
+        const card = document.createElement('div');
+        card.className = 'slab-card rv';
+        card.innerHTML = `
+          <div class="slab-img">
+            <span class="slab-cat-pill">${slab.category}</span>
+            <img src="${slab.image}" alt="${slab.name}" loading="lazy">
+          </div>
+          <div class="slab-body">
+            <h3 class="slab-name">${slab.name}</h3>
+            <p class="slab-origin"><i class="bi bi-geo" style="margin-right:4px"></i>${slab.origin}</p>
+            <p class="slab-rarity">${slab.rarity}</p>
+            <p class="slab-desc">${slab.desc || ''}</p>
+          </div>
+          <div class="slab-footer">
+            <button onclick="triggerQuickSlabBooking('${encodeURIComponent(slab.name)}')" class="btn brass" style="width:100%;padding:13px 18px">Select Slab &amp; Quote</button>
+          </div>`;
+        grid.appendChild(card);
+        // trigger reveal
+        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('in')));
+    });
+}
+
+/* ---- render catalogs ---- */
+function renderCatalogs() {
+    const grid = document.getElementById('catalogs-grid');
+    grid.innerHTML = '';
+    state.catalogs.forEach(catalog => {
+        const card = document.createElement('div');
+        card.className = 'cat-card rv';
+        card.innerHTML = `
+          <div class="cat-img">
+            <img src="${catalog.image}" alt="${catalog.title}" loading="lazy">
+            <span class="cat-img-caption">${catalog.category}</span>
+          </div>
+          <div class="cat-body">
+            <h4 class="cat-title">${catalog.title}</h4>
+            <p class="cat-desc">Includes density, micro-vein analysis &amp; available slabs list.</p>
+          </div>
+          <div class="cat-footer">
+            <a href="${catalog.url || '#'}" download="${catalog.title}.pdf" target="_blank" onclick="logCatalogDownload('${catalog.title}')" class="dl-btn">
+              <i class="bi bi-file-earmark-pdf"></i> Download PDF
+            </a>
+          </div>`;
+        grid.appendChild(card);
+        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('in')));
+    });
+}
+
+/* ---- booking ---- */
+async function handleNewAppointment(event) {
+    event.preventDefault();
+    const name  = document.getElementById('appt-name').value;
+    const phone = document.getElementById('appt-phone').value;
+    const date  = document.getElementById('appt-date').value;
+    const time  = document.getElementById('appt-time').value;
+    const focus = document.getElementById('appt-focus').value;
+    const notes = document.getElementById('appt-notes').value;
+
+    if (state.appointments.some(a => a.date === date && a.time === time)) {
+        alert(`Slot occupied. ${date} at ${time} is already reserved. Please choose another time.`);
+        logAudit(`Double-booking protection triggered for ${date} @ ${time}.`);
+        return;
+    }
+    const appt = { name, phone, date, time, focus, notes, status:"Pre-Confirmed", timestamp:new Date().toISOString() };
+    logAudit(`Committing appointment for: ${name}…`);
+    const res = await apiPost('appointments', appt);
+    if (res.success) {
+        state.appointments.push(res.result || appt);
+        document.getElementById('appointment-form').reset();
+        showSuccessModal(appt);
+        fetchShowroomAppointments();
+    } else if (res.error && res.error.includes('Slot already booked')) {
+        alert(`Slot occupied. ${date} at ${time} is already reserved. Please choose another time.`);
+        logAudit(`Double-booking protection triggered for ${date} @ ${time}.`);
+    } else {
+        alert("Technical issue writing to registry. Opening WhatsApp link anyway.");
+        showSuccessModal(appt);
+    }
+}
+
+function showSuccessModal(appt) {
+    document.getElementById('ticket-summary').innerHTML = `
+        <p><strong>Client:</strong> ${appt.name}</p>
+        <p><strong>Slot:</strong> ${appt.date} at ${appt.time}</p>
+        <p><strong>Material Focus:</strong> ${appt.focus}</p>
+        <p><strong>Security ID:</strong> AST-${Math.floor(1000+Math.random()*9000)}-AJM</p>
+        <p><strong>Showroom:</strong> Al Rawda 3, Ajman, UAE</p>`;
+    const text = `Hello Aura Stone Ajman,\nI would like to arrange an exclusive private slab review visit.\n\nDate: ${appt.date}\nTime: ${appt.time}\nMaterial: ${appt.focus}\nClient: ${appt.name}\n\nPlease confirm my appointment.`;
+    document.getElementById('whatsapp-action-btn').href = `https://wa.me/971509174778?text=${encodeURIComponent(text)}`;
+    document.getElementById('booking-modal-success').classList.remove('hidden');
+}
+function closeSuccessModal() { document.getElementById('booking-modal-success').classList.add('hidden'); }
+function openBookingModal()  { document.getElementById('experience').scrollIntoView({ behavior:'smooth' }); }
+function triggerQuickSlabBooking(slabName) {
+    document.getElementById('appt-focus').value = decodeURIComponent(slabName);
+    document.getElementById('experience').scrollIntoView({ behavior:'smooth' });
+}
+
+/* ---- CMS ---- */
+async function createNewSlab(e) {
+    e.preventDefault();
+    const slab = {
+        name:     document.getElementById('slab-name').value,
+        category: document.getElementById('slab-category').value,
+        origin:   document.getElementById('slab-origin').value,
+        rarity:   document.getElementById('slab-rarity').value,
+        image:    document.getElementById('slab-image').value,
+        desc:     document.getElementById('slab-desc').value
+    };
+    logAudit(`Pushing slab "${slab.name}" to database…`);
+    const res = await persistToDb('slabs', slab);
+    if (res.success) { state.slabs.push(slab); renderSlabs(); document.getElementById('slab-creator-form').reset(); updateCmsInterfaceCounts(); logAudit(`Slab "${slab.name}" entered into Live Catalog Registry.`); }
+    else alert("MongoDB write failed.");
+}
+
+async function addPdfCatalogue() {
+    const title    = document.getElementById('pdf-title').value;
+    const image    = document.getElementById('pdf-image').value || "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=600";
+    const url      = document.getElementById('pdf-url').value;
+    const category = document.getElementById('pdf-cat').value || "Specification Booklet";
+    if (!title) { alert("Supply a catalogue title first."); return; }
+    const catItem = { title, image, url, category };
+    logAudit(`Registering PDF "${title}"…`);
+    const res = await persistToDb('catalogs', catItem);
+    if (res.success) {
+        state.catalogs.push(catItem); renderCatalogs();
+        document.getElementById('pdf-title').value = document.getElementById('pdf-image').value = document.getElementById('pdf-cat').value = '';
+        updateCmsInterfaceCounts(); logAudit(`Catalogue "${title}" mounted into database.`);
+    } else alert("Error persisting catalogue item.");
+}
+
+async function saveCmsHeroData() {
+    const cmsData = {
+        tag:     document.getElementById('cms-input-tag').value,
+        title:   document.getElementById('cms-input-title1').value,
+        subtitle:document.getElementById('cms-input-subtitle').value,
+        heroImg: document.getElementById('cms-input-heroimg').value
+    };
+    logAudit("Updating Hero typography attributes…");
+    const result = await apiPost('cms', cmsData);
+    if (result.success) { state.heroData = cmsData; applyCmsTextUi(); logAudit("Hero layout synchronized to MongoDB."); alert("Web UI revised successfully."); }
+    else alert("Saving CMS config encountered a remote failure.");
+}
+
+function applyCmsTextUi() {
+    document.getElementById('cms-hero-tag').textContent = state.heroData.tag || 'ULTRA-PREMIUM MONOLITHIC ART';
+    const words = (state.heroData.title || 'The Ultimate Sovereign Stone.').split(' ');
+    const mid   = Math.ceil(words.length / 2);
+    document.getElementById('cms-hero-title').innerHTML =
+        words.slice(0,mid).join(' ') + '<br><em style="color:var(--brass)">' + words.slice(mid).join(' ') + '</em>';
+    document.getElementById('cms-hero-subtitle').textContent = state.heroData.subtitle || '';
+    document.getElementById('cms-hero-bg-img').src = state.heroData.heroImg || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000';
+}
+
+async function fetchShowroomAppointments() {
+    try {
+        const data = await apiGet('appointments');
+        if (data.success && data.result) { state.appointments = data.result; renderAppointmentTable(); }
+    } catch(e) { console.error("Retrieval error:", e); }
+}
+
+function renderAppointmentTable() {
+    const tbody = document.getElementById('appointment-table-body');
+    tbody.innerHTML = '';
+    state.appointments.forEach((appt,idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="color:var(--cream-deep)">${appt.name}</td>
+          <td>${appt.phone}</td>
+          <td style="color:var(--brass-soft)">${appt.date} (${appt.time})</td>
+          <td>${appt.focus}</td>
+          <td style="text-align:right"><button onclick="deleteAppointment('${appt._id||idx}')" class="purge-btn"><i class="bi bi-trash"></i> Purge</button></td>`;
+        tbody.appendChild(tr);
+    });
+    updateCmsInterfaceCounts();
+}
+
+async function deleteAppointment(id) {
+    if (!confirm("Terminate this VIP visit booking?")) return;
+    logAudit(`Deletion triggered for ID: ${id}`);
+    try {
+        const result = await apiDelete('appointments', id);
+        if (result.success) { logAudit(`Released allocation ID: ${id}`); fetchShowroomAppointments(); }
+        else { state.appointments = state.appointments.filter((_,i) => i != id); renderAppointmentTable(); }
+    } catch(e) { logAudit("Deletion aborted — evicted local reference."); }
+}
+
+function filterMaterials(cat, event) {
+    document.querySelectorAll('#category-filters .chip').forEach(b => b.classList.remove('on'));
+    if (event && event.target) event.target.classList.add('on');
+    renderSlabs(cat);
+}
+
+function updateCmsInterfaceCounts() {
+    document.getElementById('stat-slabs-count').textContent    = state.slabs.length;
+    document.getElementById('stat-catalogs-count').textContent = state.catalogs.length;
+    document.getElementById('stat-visits-count').textContent   = state.appointments.length;
+}
+
+function logCatalogDownload(name) { logAudit(`PDF Download initiated for: "${name}".`); }
+
+function logAudit(msg) {
+    const term = document.getElementById('audit-terminal');
+    const stamp = new Date().toLocaleTimeString();
+    term.innerHTML += `<br>[${stamp}] ${msg}`;
+    term.scrollTop = term.scrollHeight;
+}
+
+async function seedDatabaseInitial() {
+    if (!confirm("Insert standard luxury catalogues and slabs into the database. Continue?")) return;
+    logAudit("Starting full database seeding routine…");
+    for (let s of defaultSlabs)    await persistToDb('slabs', s);
+    for (let c of defaultCatalogs) await persistToDb('catalogs', c);
+    initializeApplication();
+    alert("Database reloaded with default premium datasets.");
+}
+</script>
+</body>
+</html>
