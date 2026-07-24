@@ -17,6 +17,19 @@ router.post('/', async (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// PUT update catalog by id
+router.put('/:id', async (req, res) => {
+  try {
+    const catalog = await Catalog.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!catalog) return res.status(404).json({ success: false, error: 'Catalog not found' });
+    res.json({ success: true, result: catalog });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // DELETE catalog by id
 router.delete('/:id', async (req, res) => {
   try {
