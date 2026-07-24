@@ -19,6 +19,19 @@ router.post('/', async (req, res) => {
   } catch (e) { res.status(500).json({ success: false, error: e.message }); }
 });
 
+// PUT update slab by id
+router.put('/:id', async (req, res) => {
+  try {
+    const slab = await Slab.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!slab) return res.status(404).json({ success: false, error: 'Slab not found' });
+    res.json({ success: true, result: slab });
+  } catch (e) { res.status(500).json({ success: false, error: e.message }); }
+});
+
 // DELETE slab by id
 router.delete('/:id', async (req, res) => {
   try {
