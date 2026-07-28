@@ -13,9 +13,15 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { date, time } = req.body;
-    const conflict = await Appointment.findOne({ date, time });
-    if (conflict) {
-      return res.status(409).json({ success: false, error: 'Slot already booked.' });
+    // Trade enquiries all share the same 'time' placeholder value, so the
+    // double-booking check (meant for real showroom visit slots) must not
+    // apply to them — otherwise the 2nd+ enquiry on the same day gets
+    // rejected outright.
+    if (time !== 'Trade Enquiry') {
+      const conflict = await Appointment.findOne({ date, time });
+      if (conflict) {
+        return res.status(409).json({ success: false, error: 'Slot already booked.' });
+      }
     }
     const appt = await Appointment.create(req.body);
     res.json({ success: true, result: appt });
